@@ -29,7 +29,7 @@ module.exports = class DemoTable {
 
     doc.text(i18n.__("titles.title_en") + "\n\n\n\n\n", 130, 70);
 
-    doc.image("../public/logo_police.png", 70, 40, {
+    doc.image("./public/logo_police.png", 70, 40, {
       fit: [50, 50],
       align: "center",
       valign: "center"
