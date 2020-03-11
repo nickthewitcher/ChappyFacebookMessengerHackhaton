@@ -96,7 +96,7 @@
   "fallback": {
     "any": "Sorry, but I don't recognize \"{{message}}\".",
     "attachment": "Thank you for sending this attachment; now we can contact an agent to review it or you can start over",
-    "birthday": "Please enter your birth date",
+    "birthday": "Please enter your birth date DD/MM/AA",
     "cel": "Please enter your mobile number",
     "email": "Please enter your email",
     "address": "Please enter your address",
