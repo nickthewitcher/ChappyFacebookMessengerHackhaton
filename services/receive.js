@@ -16,7 +16,8 @@ const Curation = require("./curation"),
   Care = require("./care"),
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
-  i18n = require("../i18n.config");
+  i18n = require("../i18n.config"),
+  config = require("./services/config");
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
@@ -380,10 +381,16 @@ module.exports = class Receive {
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
       console.log(response);
-    } else if (lastevent === "finish") {
+    } else if (lastevent === "completed") {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second];
+      let second = Response.genText(
+        i18n.__("fallback.pdfpath", {
+          message:
+            config.botUrl + "/site/wwwroot/" + this.user.idDocument + ".pdf"
+        })
+      );
+      let third = Response.genText(i18n.__("fallback.finish2"));
+      response = [first, second, third];
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
       console.log(response);
@@ -625,8 +632,14 @@ module.exports = class Receive {
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second];
+      let second = Response.genText(
+        i18n.__("fallback.pdfpath", {
+          message:
+            config.botUrl + "/site/wwwroot/" + this.user.idDocument + ".pdf"
+        })
+      );
+      let third = Response.genText(i18n.__("fallback.finish2"));
+      response = [first, second, third];
     } else if (payload.includes("accept_evidence")) {
       let first = Response.genText(i18n.__("fallback.evidence_input"));
       response = [first];

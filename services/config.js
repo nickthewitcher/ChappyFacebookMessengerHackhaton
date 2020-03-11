@@ -57,6 +57,10 @@ module.exports = {
     return this.appUrl + "/webhook";
   },
 
+  get botUrl() {
+    return this.appUrl;
+  },
+
   get newPersonas() {
     return [
       {

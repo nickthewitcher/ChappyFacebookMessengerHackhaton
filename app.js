@@ -16,6 +16,7 @@ const express = require("express"),
   crypto = require("crypto"),
   path = require("path"),
   Receive = require("./services/receive"),
+  DemoTable = require("./services/demo-table"),
   GraphAPi = require("./services/graph-api"),
   User = require("./services/user"),
   config = require("./services/config"),
@@ -306,7 +307,11 @@ app.post("/webhook", (req, res) => {
           users[senderPsid].state === "evidence" &&
           varResponse != null
         ) {
-          users[senderPsid].state = "finish";
+          let pdfReport = new DemoTable(users[senderPsid]);
+          if (pdfReport.payload === "completed") {
+            users[senderPsid].state = "completed";
+          }
+          users[senderPsid].state = "completed";
         }
         console.log("Estado cambiado");
         console.log("-------------------------------------");
