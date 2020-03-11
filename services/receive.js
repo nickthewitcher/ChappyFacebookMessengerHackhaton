@@ -142,13 +142,12 @@ module.exports = class Receive {
           Response.genQuickReply(i18n.__("fallback.wrong"), [
             {
               title: i18n.__("menu. "),
-              paylo ad: "complaints_1"
+              payload: "complaints_1"
             },
             {
               title: i18n.__("menu.complaints_2"),
               payload: "complaints_2"
-            },
-
+            }
           ])
         ];
       } else if (lastevent === "nombre") {
