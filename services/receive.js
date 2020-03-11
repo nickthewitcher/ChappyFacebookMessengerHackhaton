@@ -325,6 +325,19 @@ module.exports = class Receive {
           }
         ]);
         response = [first, second];
+      } else if (lastevent === "evidence") {
+        response = [
+          Response.genQuickReply(i18n.__("fallback.wrong"), [
+            {
+              title: i18n.__("menu.yes"),
+              payload: "accept_evidence"
+            },
+            {
+              title: i18n.__("menu.no"),
+              payload: "decline_evidence"
+            }
+          ])
+        ];
       } else {
         let first = Response.genText(
           i18n.__("fallback.any", {
