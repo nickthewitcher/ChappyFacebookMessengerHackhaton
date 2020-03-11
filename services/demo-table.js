@@ -1,7 +1,7 @@
 "use strict";
 
 const fs = require("fs");
-const PDFDocument = require("./services/pdfkit-tables");
+const PDFDocument = require("./pdfkit-tables");
 const doc = new PDFDocument();
 const i18n = require("../i18n.config");
 //const User = require("./user");
