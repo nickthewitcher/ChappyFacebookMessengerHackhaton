@@ -198,6 +198,17 @@ app.post("/webhook", (req, res) => {
                   "deny_confirmation"
                 ) {
                   users[senderPsid].state = "nombre";
+                } else if (
+                  webhook_event.message.quick_reply.payload ===
+                  "decline_evidence"
+                ) {
+                  users[senderPsid].state = "finish";
+                  console.log("PROCESO TERMINADO sin file ADJUNTO");
+                } else if (
+                  webhook_event.message.quick_reply.payload ===
+                  "accept_evidence"
+                ) {
+                  users[senderPsid].state = "evidence_confirmed";
                 }
               }
             }
@@ -230,6 +241,11 @@ app.post("/webhook", (req, res) => {
               users[senderPsid].howFact = "";
               users[senderPsid].detailFact = "";
               users[senderPsid].evidenceUrl = "";
+              let random = uuidv4();
+              console.log("Generado nuevo random");
+              console.log(random);
+              users[senderPsid].idreport = random.substring(30, 40);
+              users[senderPsid] = random;
             }
           }
         }
@@ -309,25 +325,23 @@ app.post("/webhook", (req, res) => {
             users[senderPsid].state = "recomendation4";
           }
         } else if (
-          users[senderPsid].state === "recomendation1" ||
-          users[senderPsid].state === "recomendation2" ||
-          users[senderPsid].state === "recomendation3" ||
-          (users[senderPsid].state === "recomendation4" && varResponse != null)
-        ) {
-          users[senderPsid].howFact = varResponse[2].payload;
-          users[senderPsid].state = "evidence";
-        } else if (
-          users[senderPsid].state === "evidence" &&
+          users[senderPsid].state === "evidence_confirmed" &&
           varResponse != null
         ) {
-          let pdfReport = new DemoTable(users[senderPsid]);
-          pdfReport.createPDF().then(successMessage => {
+          users[senderPsid].state = "file_input";
+        } else if (
+          (users[senderPsid].state = "file_input" && varResponse != null)
+        ) {
+          users[senderPsid].state = "finish";
+          console.log("PROCESO TERMINADO con file ADJUNTO");
+          //let pdfReport = new DemoTable(users[senderPsid]);
+
+          /*pdfReport.createPDF().then(successMessage => {
             // succesMessage es lo que sea que pasamos en la función resolve(...) de arriba.
             // No tiene por qué ser un string, pero si solo es un mensaje de éxito, probablemente lo sea.
             console.log("¡Sí! " + successMessage);
             console.log("Se creo el PDF");
-            users[senderPsid].state = "completed";
-          });
+          });*/
         }
         console.log("Estado cambiado");
         console.log("-------------------------------------");

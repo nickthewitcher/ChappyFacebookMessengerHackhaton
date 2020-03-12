@@ -432,7 +432,7 @@ module.exports = class Receive {
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
       console.log(response);
-    } else if (lastevent === "completed") {
+    } else if (lastevent === "file_input") {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
@@ -450,7 +450,8 @@ module.exports = class Receive {
       console.log("IMPRIMIENDO URL:");
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
       let fourth = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second, third, fourth];
+      let fifth = { payload: "finish"};
+      response = [first, second, third, fourth, fifth];
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
       console.log(response);
@@ -708,7 +709,8 @@ module.exports = class Receive {
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
 
       let forth = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second, third, forth];
+      let fifth = { payload: "finish"};
+      response = [first, second, third, forth, fifth];
     } else if (payload.includes("accept_evidence")) {
       let first = Response.genText(i18n.__("fallback.evidence_input"));
       response = [first];
