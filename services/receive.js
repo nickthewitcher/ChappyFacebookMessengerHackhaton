@@ -416,9 +416,8 @@ module.exports = class Receive {
     let attachment = this.webhookEvent.message.attachments[0];
     console.log("Received attachment:", `${attachment} for ${this.user.psid}`);
     if (lastevent === "photoquestion") {
-      response = [Response.genQuickReply(
-        i18n.__("fallback.preparationquestion"),
-        [
+      response = [
+        Response.genQuickReply(i18n.__("fallback.preparationquestion"), [
           {
             title: i18n.__("menu.yes"),
             payload: "yes_confirmation"
@@ -427,8 +426,8 @@ module.exports = class Receive {
             title: i18n.__("menu.no"),
             payload: "deny_confirmation"
           }
-        ]
-      )];
+        ])
+      ];
       console.log("Receive.js 135 help");
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
@@ -438,7 +437,7 @@ module.exports = class Receive {
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
       let third = Response.genGenericTemplate(
-        `https://facebook-bot-messenger.azurewebsites.net/logo_police.png`,
+        `${config.appUrl}/logo_police.png`,
         i18n.__("titles.title_en"),
         this.user.idreport,
         [
