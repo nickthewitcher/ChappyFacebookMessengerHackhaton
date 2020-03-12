@@ -435,7 +435,7 @@ module.exports = class Receive {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(
         i18n.__("fallback.pdfpath", {
-          message: `${config.botUrl}/${this.user.idDocument}.pdf`
+          message: `${this.user.idDocument}.pdf`
         })
       );
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
@@ -689,7 +689,7 @@ module.exports = class Receive {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(
         i18n.__("fallback.pdfpath", {
-          message: `${config.botUrl}/${this.user.idDocument}.pdf`
+          message: `${this.user.idDocument}.pdf`
         })
       );
       let third = Response.genHyperlinkTemplate(

@@ -127,7 +127,7 @@
     "recomendation4": "Recomendamos  comunicarte cuanto antes con la policia para salvaguardar tu integridad.",
     "evidence": "¿Desea adjuntar alguna evidencia?",
     "evidence_input": "Por favor, adjunte la evidencia.",
-    "pdfpath": "Puedes descargar una copia de tu denuncia desde el siguiente enlace: \"{{message}}\".",
+    "pdfpath": "Puedes descargar una copia de tu denuncia desde el siguiente enlace: https://facebook-bot-messenger.azurewebsites.net/\"{{message}}\".",
     "finish1": "Listo, no te preocupes, tu denuncia ha sido registrada  con el código xxx y será derivada a las entidades pertinentes. ",
     "finish2": "Te atendió Chappy Police Man, espero haberte ayudado. Que tengas un buen día."
   },
