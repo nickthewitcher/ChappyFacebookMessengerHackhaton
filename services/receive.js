@@ -692,13 +692,17 @@ module.exports = class Receive {
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(
-        i18n.__("fallback.pdfpath", {
-          message: `${this.user.idDocument}.pdf`
-        })
-      );
-      let third = Response.genHyperlinkTemplate(
-        `${config.botUrl}/${this.user.idDocument}.pdf`
+      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let third = Response.genGenericTemplate(
+        `${config.appUrl}/logo_police.png`,
+        i18n.__("titles.title_en"),
+        this.user.idreport,
+        [
+          Response.genWebUrlButton(
+            i18n.__("titles.download_here"),
+            `${config.botUrl}/${this.user.idDocument}.pdf`
+          )
+        ]
       );
       console.log("IMPRIMIENDO URL:");
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
