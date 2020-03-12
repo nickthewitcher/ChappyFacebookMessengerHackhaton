@@ -316,12 +316,13 @@ app.post("/webhook", (req, res) => {
           varResponse != null
         ) {
           let pdfReport = new DemoTable(users[senderPsid]);
-          let pdfresponse = pdfReport.createPDF();
-          if (pdfresponse.payload === "completed") {
+          pdfReport.createPDF().then(successMessage => {
+            // succesMessage es lo que sea que pasamos en la función resolve(...) de arriba.
+            // No tiene por qué ser un string, pero si solo es un mensaje de éxito, probablemente lo sea.
+            console.log("¡Sí! " + successMessage);
             console.log("Se creo el PDF");
             users[senderPsid].state = "completed";
-          }
-          users[senderPsid].state = "completed";
+          });
         }
         console.log("Estado cambiado");
         console.log("-------------------------------------");
