@@ -321,7 +321,7 @@ module.exports = class Receive {
           payload: this.webhookEvent.message.text,
           user: this.user.psid
         };
-        response = [first, second ,payloadData];
+        response = [first, second, payloadData];
       } else if (lastevent === "recomendation2") {
         let first = Response.genText(i18n.__("fallback.recomendation2"));
 
@@ -685,7 +685,7 @@ module.exports = class Receive {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genHyperlinkTemplate(
-        config.botUrl + "/" + this.user.idDocument + ".pdf"
+        `${config.botUrl}/${this.user.idDocument}.pdf`
       );
       let forth = Response.genText(i18n.__("fallback.finish2"));
       response = [first, second, third, forth];

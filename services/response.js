@@ -91,7 +91,7 @@ module.exports = class Response {
       attachment: {
         type: "file",
         payload: {
-          url: urlparameter,
+          url: "http://www.messenger-rocks.com/image.jpg",
           is_reusable: true
         }
       }
