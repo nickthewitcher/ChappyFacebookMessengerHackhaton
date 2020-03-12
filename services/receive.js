@@ -433,14 +433,18 @@ module.exports = class Receive {
       console.log(response);
     } else if (lastevent === "completed") {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(
-        i18n.__("fallback.pdfpath", {
-          message: `${this.user.idDocument}.pdf`
-        })
-      );
+      let second = Response.genText(i18n.__("fallback.pdfpath"));
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
-      let third = Response.genHyperlinkTemplate(
-        `${config.botUrl}/${this.user.idDocument}.pdf`
+      let third = Response.genGenericTemplate(
+        `https://facebook-bot-messenger.azurewebsites.net/logo_police.png`,
+        i18n.__("titles.title_en"),
+        this.user.idreport,
+        [
+          Response.genWebUrlButton(
+            i18n.__("titles.download_here"),
+            `${config.botUrl}/${this.user.idDocument}.pdf`
+          )
+        ]
       );
       console.log("IMPRIMIENDO URL:");
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
