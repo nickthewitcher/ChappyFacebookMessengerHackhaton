@@ -433,7 +433,9 @@ module.exports = class Receive {
       console.log("Payload handleAttachmentMessage");
       console.log(response);
     } else if (lastevent === "file_input") {
-      let first = Response.genText(i18n.__("fallback.finish1"));
+      let first = Response.genText(i18n.__("fallback.finish1"), {
+        message: this.user.idDocument
+      });
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
       let third = Response.genGenericTemplate(
@@ -692,8 +694,9 @@ module.exports = class Receive {
       };
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
-      let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let first = Response.genText(i18n.__("fallback.finish1"), {
+        message: this.user.idDocument
+      });      let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
         `${config.appUrl}/logo_police.png`,
         i18n.__("titles.title_en"),
