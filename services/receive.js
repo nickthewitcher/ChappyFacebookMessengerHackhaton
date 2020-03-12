@@ -438,8 +438,8 @@ module.exports = class Receive {
       let third = Response.genHyperlinkTemplate(
         `${config.botUrl}/${this.user.idDocument}.pdf`
       );
-      console.log("IMPRIMIENDO LINK:");
-      console.log(third);
+      console.log("IMPRIMIENDO URL:");
+      console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
       let fourth = Response.genText(i18n.__("fallback.finish2"));
       response = [first, second, third, fourth];
       console.log("---------Llamando a handleAttachmentMessage----------");
@@ -687,6 +687,9 @@ module.exports = class Receive {
       let third = Response.genHyperlinkTemplate(
         `${config.botUrl}/${this.user.idDocument}.pdf`
       );
+      console.log("IMPRIMIENDO URL:");
+      console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
+
       let forth = Response.genText(i18n.__("fallback.finish2"));
       response = [first, second, third, forth];
     } else if (payload.includes("accept_evidence")) {
