@@ -86,6 +86,19 @@ module.exports = class Response {
     return response;
   }
 
+  static genHyperlinkTemplate(urlparameter) {
+    let response = {
+      attachment: {
+        type: "file",
+        payload: {
+          url: urlparameter,
+          is_reusable: true
+        }
+      }
+    };
+    return response;
+  }
+
   static genText(text) {
     let response = {
       text: text
@@ -155,7 +168,7 @@ module.exports = class Response {
 
     let mypayload = {
       payload: "mygreetings"
-    }
+    };
 
     return [welcome, guide, inputname, mypayload];
   }

@@ -433,14 +433,12 @@ module.exports = class Receive {
       console.log(response);
     } else if (lastevent === "completed") {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(
-        i18n.__("fallback.pdfpath", {
-          message:
-            config.botUrl + "/site/wwwroot/" + this.user.idDocument + ".pdf"
-        })
+      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let third = Response.genHyperlinkTemplate(
+        config.botUrl + "/" + this.user.idDocument + ".pdf"
       );
-      let third = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second, third];
+      let fourth = Response.genText(i18n.__("fallback.finish2"));
+      response = [first, second, third, fourth];
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
       console.log(response);
@@ -682,13 +680,12 @@ module.exports = class Receive {
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(
-        i18n.__("fallback.pdfpath", {
-          message: config.botUrl + "/" + this.user.idDocument + ".pdf"
-        })
+      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let third = Response.genHyperlinkTemplate(
+        config.botUrl + "/" + this.user.idDocument + ".pdf"
       );
-      let third = Response.genText(i18n.__("fallback.finish2"));
-      response = [first, second, third];
+      let forth = Response.genText(i18n.__("fallback.finish2"));
+      response = [first, second, third, forth];
     } else if (payload.includes("accept_evidence")) {
       let first = Response.genText(i18n.__("fallback.evidence_input"));
       response = [first];
