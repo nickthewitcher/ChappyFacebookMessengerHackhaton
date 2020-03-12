@@ -308,8 +308,8 @@ app.post("/webhook", (req, res) => {
           varResponse != null
         ) {
           let pdfReport = new DemoTable(users[senderPsid]);
-          pdfReport.createPDF();
-          if (pdfReport.payload === "completed") {
+          let pdfresponse = pdfReport.createPDF();
+          if (pdfresponse.payload === "completed") {
             console.log("Se creo el PDF");
             users[senderPsid].state = "completed";
           }
