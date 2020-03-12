@@ -81,7 +81,9 @@ module.exports = class Receive {
       }
     } else {
       console.log("Es una respuesta individual no array");
-      this.sendMessage(responses);
+      let resultado = this.sendMessage(responses);
+      console.log("Resultado send message:");
+      console.log(resultado);
     }
 
     return responses;
@@ -414,7 +416,7 @@ module.exports = class Receive {
     let attachment = this.webhookEvent.message.attachments[0];
     console.log("Received attachment:", `${attachment} for ${this.user.psid}`);
     if (lastevent === "photoquestion") {
-      response = Response.genQuickReply(
+      response = [Response.genQuickReply(
         i18n.__("fallback.preparationquestion"),
         [
           {
@@ -426,7 +428,7 @@ module.exports = class Receive {
             payload: "deny_confirmation"
           }
         ]
-      );
+      )];
       console.log("Receive.js 135 help");
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
