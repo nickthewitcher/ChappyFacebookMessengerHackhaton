@@ -49,14 +49,25 @@ module.exports = class DemoTable {
       const stepFinished = () => {
         if (--pendingStepCount == 0) {
           resolve("sucess");
-          pendingStepCount = 2;
+          console.log("Demo-table success");
         }
       };
+
+      if (pendingStepCount === 2) {
+        console.log("Iniciando 2");
+      } else if (pendingStepCount === 1) {
+        console.log("Iniciando 2");
+      } else if (pendingStepCount === 0) {
+        console.log("Terminando 0");
+      }
 
       const writeStream = fs.createWriteStream(
         __dirname + "/public/" + this.user.idDocument + ".pdf"
       );
+      writeStream.on("finish", stepFinished);
+
       doc.pipe(writeStream);
+      console.log("Empezando pipe");
 
       /*
       doc.pipe(
@@ -74,6 +85,7 @@ module.exports = class DemoTable {
       );
 
       doc.text(i18n.__("titles.title_en") + "\n\n\n\n\n", 130, 70);
+      console.log("LLamando a doc.text 91");
 
       doc.image("./public/logo_police.png", 70, 40, {
         fit: [50, 50],
@@ -121,6 +133,7 @@ module.exports = class DemoTable {
         350,
         670
       );
+      console.log("LLamando a doc.text 139");
 
       doc.text(
         "____________________________\n" +
@@ -137,8 +150,8 @@ module.exports = class DemoTable {
       );
 
       doc.end();
+      console.log("LLamando a doc.end");
       stepFinished();
-      writeStream.on("close", stepFinished);
     });
   }
 };
