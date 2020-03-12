@@ -245,7 +245,7 @@ app.post("/webhook", (req, res) => {
               console.log("Generado nuevo random");
               console.log(random);
               users[senderPsid].idreport = random.substring(30, 40);
-              users[senderPsid] = random;
+              users[senderPsid].idDocument = random;
             }
           }
         }
