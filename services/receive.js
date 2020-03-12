@@ -434,9 +434,12 @@ module.exports = class Receive {
     } else if (lastevent === "completed") {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(i18n.__("fallback.pdfpath"));
+      //`${this.config.botUrl}/${this.user.idDocument}.url`;
       let third = Response.genHyperlinkTemplate(
-        config.botUrl + "/" + this.user.idDocument + ".pdf"
+        `${config.botUrl}/${this.user.idDocument}.pdf`
       );
+      console.log("IMPRIMIENDO LINK:");
+      console.log(third);
       let fourth = Response.genText(i18n.__("fallback.finish2"));
       response = [first, second, third, fourth];
       console.log("---------Llamando a handleAttachmentMessage----------");
