@@ -56,7 +56,7 @@ module.exports = class DemoTable {
       if (pendingStepCount === 2) {
         console.log("Iniciando 2");
       } else if (pendingStepCount === 1) {
-        console.log("Iniciando 2");
+        console.log("Iniciando 1");
       } else if (pendingStepCount === 0) {
         console.log("Terminando 0");
       }

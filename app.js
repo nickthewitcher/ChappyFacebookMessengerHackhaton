@@ -22,7 +22,7 @@ const express = require("express"),
   config = require("./services/config"),
   i18n = require("./i18n.config"),
   app = express();
-
+const { v4: uuidv4 } = require("uuid");
 var users = {};
 // Parse application/x-www-form-urlencoded
 app.use(
@@ -181,6 +181,11 @@ app.post("/webhook", (req, res) => {
                 users[senderPsid].howFact = "";
                 users[senderPsid].detailFact = "";
                 users[senderPsid].evidenceUrl = "";
+                let random = uuidv4();
+                console.log("Generado nuevo random");
+                console.log(random);
+                users[senderPsid].idreport = random.substring(30, 40);
+                users[senderPsid] = random;
               }
             }
           }
