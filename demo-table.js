@@ -49,13 +49,13 @@ module.exports = class DemoTable {
       const stepFinished = () => {
         if (--pendingStepCount == 0) {
           resolve("sucess");
+          pendingStepCount = 2;
         }
       };
 
       const writeStream = fs.createWriteStream(
         __dirname + "/public/" + this.user.idDocument + ".pdf"
       );
-      writeStream.on("close", stepFinished);
       doc.pipe(writeStream);
 
       /*
@@ -137,8 +137,8 @@ module.exports = class DemoTable {
       );
 
       doc.end();
-
       stepFinished();
+      writeStream.on("close", stepFinished);
     });
   }
 };
