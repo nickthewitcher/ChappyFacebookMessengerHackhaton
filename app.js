@@ -256,20 +256,25 @@ app.post("/webhook", (req, res) => {
           users[senderPsid].legalName = varResponse[1].payload;
           users[senderPsid].state = "dni";
         } else if (users[senderPsid].state === "dni" && varResponse != null) {
+          users[senderPsid].legalDni = varResponse[1].payload;
           users[senderPsid].state = "birthday";
         } else if (
           users[senderPsid].state === "birthday" &&
           varResponse != null
         ) {
+          users[senderPsid].legalBirthday = varResponse[1].payload;
           users[senderPsid].state = "cel";
         } else if (users[senderPsid].state === "cel" && varResponse != null) {
+          users[senderPsid].cellphone = varResponse[1].payload;
           users[senderPsid].state = "email";
         } else if (users[senderPsid].state === "email" && varResponse != null) {
           users[senderPsid].state = "address";
+          users[senderPsid].legalEmail = varResponse[1].payload;
         } else if (
           users[senderPsid].state === "address" &&
           varResponse != null
         ) {
+          users[senderPsid].legaladdress = varResponse[1].payload;
           users[senderPsid].state = "photoquestion";
         } else if (
           users[senderPsid].state === "photoquestion" &&
@@ -282,8 +287,10 @@ app.post("/webhook", (req, res) => {
         ) {
           users[senderPsid].state = "when";
         } else if (users[senderPsid].state === "when" && varResponse != null) {
+          users[senderPsid].dateOfFact = varResponse[1].payload;
           users[senderPsid].state = "where";
         } else if (users[senderPsid].state === "where" && varResponse != null) {
+          users[senderPsid].addressFact = varResponse[2].payload;
           if (users[senderPsid].typeOfReport === "yes_1") {
             users[senderPsid].state = "recomendation1";
           }
@@ -300,8 +307,9 @@ app.post("/webhook", (req, res) => {
           users[senderPsid].state === "recomendation1" ||
           users[senderPsid].state === "recomendation2" ||
           users[senderPsid].state === "recomendation3" ||
-          users[senderPsid].state === "recomendation4"
+          (users[senderPsid].state === "recomendation4" && varResponse != null)
         ) {
+          users[senderPsid].howFact = varResponse[2].payload;
           users[senderPsid].state = "evidence";
         } else if (
           users[senderPsid].state === "evidence" &&

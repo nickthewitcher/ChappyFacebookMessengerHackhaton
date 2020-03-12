@@ -211,16 +211,31 @@ module.exports = class Receive {
         };
         response = [responseData, payloadData];
       } else if (lastevent === "dni") {
-        response = [Response.genText(i18n.__("fallback.birthday"))];
+        let first = Response.genText(i18n.__("fallback.birthday"));
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, payloadData];
       } else if (lastevent === "birthday") {
-        response = [Response.genText(i18n.__("fallback.cel"))];
+        let first = Response.genText(i18n.__("fallback.cel"));
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, payloadData];
       } else if (lastevent === "cel") {
         let celMessage = this.firstEntity(
           this.webhookEvent.message.nlp,
           "phone_number"
         );
         if (celMessage && celMessage.confidence > 0.8) {
-          response = [Response.genText(i18n.__("fallback.email"))];
+          let first = Response.genText(i18n.__("fallback.email"));
+          let payloadData = {
+            payload: this.webhookEvent.message.text,
+            user: this.user.psid
+          };
+          response = [first, payloadData];
         } else {
           response = [Response.genText(i18n.__("fallback.wrong"))];
         }
@@ -230,12 +245,22 @@ module.exports = class Receive {
           "email"
         );
         if (emailMessage && emailMessage.confidence > 0.8) {
-          response = [Response.genText(i18n.__("fallback.address"))];
+          let first = Response.genText(i18n.__("fallback.address"));
+          let payloadData = {
+            payload: this.webhookEvent.message.text,
+            user: this.user.psid
+          };
+          response = [first, payloadData];
         } else {
           response = [Response.genText(i18n.__("fallback.wrong"))];
         }
       } else if (lastevent === "address") {
-        response = [Response.genText(i18n.__("fallback.photoquestion"))];
+        let first = Response.genText(i18n.__("fallback.photoquestion"));
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, payloadData];
       } else if (lastevent === "preparationquestion") {
         response = [
           Response.genQuickReply(i18n.__("fallback.wrong"), [
@@ -254,7 +279,12 @@ module.exports = class Receive {
         console.log("Payload handleAttachmentMessage");
         console.log(response);
       } else if (lastevent === "when") {
-        response = [Response.genText(i18n.__("fallback.scenefact"))];
+        let first = Response.genText(i18n.__("fallback.scenefact"));
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, payloadData];
       } else if (lastevent === "where") {
         let first = Response.genText(i18n.__("fallback.specificfact"));
         let second;
@@ -267,7 +297,11 @@ module.exports = class Receive {
         } else if (this.user.typeOfReport === "yes_4") {
           second = Response.genText(i18n.__("fallback.details4"));
         }
-        response = [first, second];
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, second, payloadData];
       }
       //how
       else if (lastevent === "recomendation1") {
@@ -283,7 +317,11 @@ module.exports = class Receive {
             payload: "decline_evidence"
           }
         ]);
-        response = [first, second];
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, second ,payloadData];
       } else if (lastevent === "recomendation2") {
         let first = Response.genText(i18n.__("fallback.recomendation2"));
 
@@ -297,7 +335,11 @@ module.exports = class Receive {
             payload: "decline_evidence"
           }
         ]);
-        response = [first, second];
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, second, payloadData];
       } else if (lastevent === "recomendation3") {
         let first = Response.genText(i18n.__("fallback.recomendation3"));
 
@@ -311,7 +353,11 @@ module.exports = class Receive {
             payload: "decline_evidence"
           }
         ]);
-        response = [first, second];
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, second, payloadData];
       } else if (lastevent === "recomendation4") {
         let first = Response.genText(i18n.__("fallback.recomendation4"));
 
@@ -325,7 +371,11 @@ module.exports = class Receive {
             payload: "decline_evidence"
           }
         ]);
-        response = [first, second];
+        let payloadData = {
+          payload: this.webhookEvent.message.text,
+          user: this.user.psid
+        };
+        response = [first, second, payloadData];
       } else if (lastevent === "evidence") {
         response = [
           Response.genQuickReply(i18n.__("fallback.wrong"), [
@@ -634,8 +684,7 @@ module.exports = class Receive {
       let first = Response.genText(i18n.__("fallback.finish1"));
       let second = Response.genText(
         i18n.__("fallback.pdfpath", {
-          message:
-            config.botUrl + "/site/wwwroot/" + this.user.idDocument + ".pdf"
+          message: config.botUrl + "/" + this.user.idDocument + ".pdf"
         })
       );
       let third = Response.genText(i18n.__("fallback.finish2"));

@@ -56,8 +56,8 @@ module.exports = class DemoTable {
         [i18n.__("report.type_en"), this.user.typeOfReport],
         [i18n.__("report.datetime_en"), this.user.dateOfFact],
         [i18n.__("report.place_en"), this.user.addressFact],
-        [i18n.__("report.details_en"), this.user.detailFact],
-        [i18n.__("report.evidence_en"), this.user.evidenceUrl]
+        [i18n.__("report.details_en"), this.user.howFact]
+        //,        [i18n.__("report.evidence_en"), this.user.evidenceUrl]
       ]
     };
 
