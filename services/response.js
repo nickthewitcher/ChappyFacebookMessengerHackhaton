@@ -91,8 +91,7 @@ module.exports = class Response {
       attachment: {
         type: "file",
         payload: {
-          url: "" + urlparameter,
-          is_reusable: true
+          url: urlparameter
         }
       }
     };

@@ -433,7 +433,11 @@ module.exports = class Receive {
       console.log(response);
     } else if (lastevent === "completed") {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let second = Response.genText(
+        i18n.__("fallback.pdfpath", {
+          message: `${config.botUrl}/${this.user.idDocument}.pdf`
+        })
+      );
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
       let third = Response.genHyperlinkTemplate(
         `${config.botUrl}/${this.user.idDocument}.pdf`
@@ -683,7 +687,11 @@ module.exports = class Receive {
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"));
-      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      let second = Response.genText(
+        i18n.__("fallback.pdfpath", {
+          message: `${config.botUrl}/${this.user.idDocument}.pdf`
+        })
+      );
       let third = Response.genHyperlinkTemplate(
         `${config.botUrl}/${this.user.idDocument}.pdf`
       );
