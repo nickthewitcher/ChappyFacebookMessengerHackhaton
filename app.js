@@ -207,6 +207,14 @@ app.post("/webhook", (req, res) => {
                   console.log("decline confirmation app.js");
 
                   console.log("PROCESO TERMINADO sin file ADJUNTO");
+                  let pdfReport = new DemoTable(users[senderPsid]);
+
+                  pdfReport.createPDF().then(successMessage => {
+                    // succesMessage es lo que sea que pasamos en la función resolve(...) de arriba.
+                    // No tiene por qué ser un string, pero si solo es un mensaje de éxito, probablemente lo sea.
+                    console.log("¡Sí! " + successMessage);
+                    console.log("Se creo el PDF");
+                  });
                 } else if (
                   webhook_event.message.quick_reply.payload ===
                   "accept_evidence"
