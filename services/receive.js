@@ -429,7 +429,7 @@ module.exports = class Receive {
       console.log(first);
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
-        `${config.appUrl}/logo_police.png`,
+        `${config.appUrl}/logo_chappy_police.png`,
         i18n.__("titles.title_en"),
         this.user.idreport,
         [
@@ -690,7 +690,7 @@ module.exports = class Receive {
       console.log(first);
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
-        `${config.appUrl}/logo_police.png`,
+        `${config.appUrl}/logo_chappy_police.png`,
         i18n.__("titles.title_en"),
         this.user.idreport,
         [
