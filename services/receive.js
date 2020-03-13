@@ -27,6 +27,8 @@ module.exports = class Receive {
 
   // Check if the event is a message or postback and
   // call the appropriate handler function
+  //proper comment
+
   handleMessage(lastevent) {
     let event = this.webhookEvent;
 
