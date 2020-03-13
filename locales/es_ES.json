@@ -127,7 +127,7 @@
     "evidence": "¿Desea adjuntar alguna evidencia?",
     "evidence_input": "Por favor, adjunte la evidencia.",
     "pdfpath": "Puedes descargar una copia de tu denuncia desde el siguiente enlace:",
-    "dontworry": "Listo, no te preocupes, tu denuncia ha sido registrada  con el código \"{{codereport}}\" y será derivada a las entidades pertinentes",
+    "dontworry": "Listo, no te preocupes, tu denuncia ha sido registrada y será derivada a las entidades pertinentes",
     "finish1": "Listo, no te preocupes, tu denuncia ha sido registrada  con el código \"{{message}}\" y será derivada a las entidades pertinentes. ",
     "finish2": "Te atendió Chappy Police Man, espero haberte ayudado. Que tengas un buen día."
   },
