@@ -69,7 +69,7 @@ module.exports = class Receive {
           console.log("Asignando nulo");
           responses = null;
         }
-        if (response.payload === "no" || response.payload === "incorrect") {
+        if (response.payload === "incorrect") {
           console.log("Asignando nulo en No");
           responses = null;
         }
@@ -378,19 +378,6 @@ module.exports = class Receive {
           user: this.user.psid
         };
         response = [first, second, payloadData];
-      } else if (lastevent === "evidence") {
-        response = [
-          Response.genQuickReply(i18n.__("fallback.wrong"), [
-            {
-              title: i18n.__("menu.yes"),
-              payload: "accept_evidence"
-            },
-            {
-              title: i18n.__("menu.no"),
-              payload: "decline_evidence"
-            }
-          ])
-        ];
       } else {
         let first = Response.genText(
           i18n.__("fallback.any", {
@@ -452,7 +439,7 @@ module.exports = class Receive {
       console.log("IMPRIMIENDO URL:");
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
       let fourth = Response.genText(i18n.__("fallback.finish2"));
-      let fifth = { payload: "finish"};
+      let fifth = { payload: "finish" };
       response = [first, second, third, fourth, fifth];
       console.log("---------Llamando a handleAttachmentMessage----------");
       console.log("Payload handleAttachmentMessage");
@@ -674,11 +661,10 @@ module.exports = class Receive {
           }
         ]
       );
-      let payloadData = {
-        payload: "no",
-        user: this.user.psid
+      let mypayload = {
+        payload: "mygreetings"
       };
-      response = [firstResponse, payloadData];
+      response = [firstResponse, mypayload];
     } else if (payload.includes("deny_confirmation")) {
       let first = Response.genText(i18n.__("get_started.input_name"));
       let payloadSecond = {
@@ -696,7 +682,8 @@ module.exports = class Receive {
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"), {
         message: this.user.idDocument
-      });      let second = Response.genText(i18n.__("fallback.pdfpath"));
+      });
+      let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
         `${config.appUrl}/logo_police.png`,
         i18n.__("titles.title_en"),
@@ -712,7 +699,7 @@ module.exports = class Receive {
       console.log(`${config.botUrl}/${this.user.idDocument}.pdf`);
 
       let forth = Response.genText(i18n.__("fallback.finish2"));
-      let fifth = { payload: "finish"};
+      let fifth = { payload: "finish" };
       response = [first, second, third, forth, fifth];
     } else if (payload.includes("accept_evidence")) {
       let first = Response.genText(i18n.__("fallback.evidence_input"));
