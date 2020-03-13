@@ -252,6 +252,29 @@ app.post("/webhook", (req, res) => {
               users[senderPsid].idreport = random.substring(30, 40);
               users[senderPsid].idDocument = random;
             }
+          } else if (varResponse.length === 2) {
+            if (varResponse[1].payload === "mygreetings") {
+              console.log("My greetings");
+              users[senderPsid].state = "getstarted";
+              users[senderPsid].typeOfReport = "";
+              users[senderPsid].legalName = "";
+              users[senderPsid].legalDni = "";
+              users[senderPsid].legalBirthday = "";
+              users[senderPsid].cellphone = "";
+              users[senderPsid].legalEmail = "";
+              users[senderPsid].legaladdress = "";
+              users[senderPsid].photoUrl = "";
+              users[senderPsid].dateOfFact = "";
+              users[senderPsid].addressFact = "";
+              users[senderPsid].howFact = "";
+              users[senderPsid].detailFact = "";
+              users[senderPsid].evidenceUrl = "";
+              let random = uuidv4();
+              console.log("Generado nuevo random");
+              console.log(random);
+              users[senderPsid].idreport = random.substring(30, 40);
+              users[senderPsid].idDocument = random;
+            }
           }
         }
         console.log("El response a retornar:");
@@ -271,14 +294,16 @@ app.post("/webhook", (req, res) => {
           users[senderPsid].state === "confirm_input" &&
           varResponse != null
         ) {
-          console.log("Confirmacion a asignar: " + varResponse[1].payload);
+          console.log(
+            "Confirm input stado , a asignar: " + varResponse[1].payload
+          );
           users[senderPsid].typeOfReport = varResponse[1].payload;
           users[senderPsid].state = "nombre";
         } else if (
           users[senderPsid].state === "nombre" &&
           varResponse != null
         ) {
-          console.log("Confirmacion a asignar: " + varResponse[1].payload);
+          console.log("nombre estado a asignar: " + varResponse[1].payload);
           users[senderPsid].legalName = varResponse[1].payload;
           users[senderPsid].state = "dni";
         } else if (users[senderPsid].state === "dni" && varResponse != null) {
