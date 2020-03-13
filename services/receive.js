@@ -421,7 +421,7 @@ module.exports = class Receive {
       console.log(response);
     } else if (lastevent === "file_input") {
       let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: this.user.idDocument
+        message: this.user.idreport
       });
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       //`${this.config.botUrl}/${this.user.idDocument}.url`;
@@ -681,7 +681,7 @@ module.exports = class Receive {
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
       let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: this.user.idDocument
+        message: this.user.idreport
       });
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
