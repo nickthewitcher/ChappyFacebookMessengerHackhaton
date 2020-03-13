@@ -423,8 +423,10 @@ module.exports = class Receive {
       console.log("Asignando codigo a mensaje");
       console.log(this.user.idreport);
       let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: this.user.idreport + ""
+        message: `${this.user.idreport}`
       });
+      console.log("first");
+      console.log(first);
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
         `${config.appUrl}/logo_police.png`,
@@ -684,8 +686,10 @@ module.exports = class Receive {
       console.log("Asignando codigo a mensaje");
       console.log(this.user.idreport);
       let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: this.user.idreport + ""
+        message: `${this.user.idreport}`
       });
+      console.log("first");
+      console.log(first);
       let second = Response.genText(i18n.__("fallback.pdfpath"));
       let third = Response.genGenericTemplate(
         `${config.appUrl}/logo_police.png`,
