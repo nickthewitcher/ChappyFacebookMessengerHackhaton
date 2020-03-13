@@ -422,8 +422,8 @@ module.exports = class Receive {
     } else if (lastevent === "file_input") {
       console.log("Asignando codigo a mensaje");
       console.log(this.user.idreport);
-      let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: `${this.user.idreport}`
+      let first = Response.genText(i18n.__("fallback.dontworry"), {
+        codereport: this.user.idreport
       });
       console.log("first");
       console.log(first);
@@ -685,8 +685,8 @@ module.exports = class Receive {
     } else if (payload.includes("decline_evidence")) {
       console.log("Asignando codigo a mensaje");
       console.log(this.user.idreport);
-      let first = Response.genText(i18n.__("fallback.finish1"), {
-        message: `${this.user.idreport}`
+      let first = Response.genText(i18n.__("fallback.dontworry"), {
+        codereport: this.user.idreport
       });
       console.log("first");
       console.log(first);
