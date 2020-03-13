@@ -116,7 +116,6 @@
     "specificfact": "Tell me how it happened? Try to include the following information:",
     "questionvidence": "Do you want to attach any evidence?",
     "attachevidence": "Please attach the photo / document of the evidence.",
-    "registeredcomplaint": "Ready, do not worry, your complaint has been registered with the code xxx and will be referred to the relevant entities.",
     "details1": "Details of victims and criminals, information on stolen objects.",
     "details2": "Details of victims and criminals, of weapons used and of stolen objects.",
     "details3": "Details of the aggressors and the weapons used",
@@ -128,7 +127,7 @@
     "evidence": "Do you want to attach any evidence?",
     "evidence_input": "Please attach the evidence.",
     "pdfpath": "You can download your report from:",
-    "finish1": "Ready, do not worry, your complaint has been registered with the code \"{{message}}\" and will be referred to the relevant entities.",
+    "finish1": "Ready, don't worry, your complaint has been registered with \"{{message}}\" and will be referred to the relevant entities.",
     "finish2": "Chappy Police Man attended you, I hope I helped you. Have a nice day."
   },
   "titles": {

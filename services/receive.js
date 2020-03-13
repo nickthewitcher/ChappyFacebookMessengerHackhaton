@@ -426,7 +426,6 @@ module.exports = class Receive {
         message: this.user.idreport
       });
       let second = Response.genText(i18n.__("fallback.pdfpath"));
-      //`${this.config.botUrl}/${this.user.idDocument}.url`;
       let third = Response.genGenericTemplate(
         `${config.appUrl}/logo_police.png`,
         i18n.__("titles.title_en"),
