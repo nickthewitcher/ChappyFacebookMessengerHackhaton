@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 const PDFDocument = require("./pdfkit-tables");
-const doc = new PDFDocument();
 const i18n = require("./i18n.config");
 //const User = require("./user");
 
@@ -44,9 +43,12 @@ module.exports = class DemoTable {
       //   1. The write stream has been closed
       //   2. PDFDocument.end() was called syncronously without an error being thrown
 
+      const doc = new PDFDocument();
+
       let pendingStepCount = 2;
 
       const stepFinished = () => {
+        console.log("llamada finished");
         if (--pendingStepCount == 0) {
           resolve("sucess");
           console.log("Demo-table success");
@@ -64,7 +66,6 @@ module.exports = class DemoTable {
       const writeStream = fs.createWriteStream(
         __dirname + "/public/" + this.user.idDocument + ".pdf"
       );
-      writeStream.on("finish", stepFinished);
 
       doc.pipe(writeStream);
       console.log("Empezando pipe");
@@ -152,6 +153,14 @@ module.exports = class DemoTable {
       doc.end();
       console.log("LLamando a doc.end");
       stepFinished();
+
+      writeStream.on("finish", stepFinished);
+      writeStream.on("error", e => {
+        console.log("Error:");
+        console.log(e);
+        console.log("----------");
+        reject(e);
+      });
     });
   }
 };
