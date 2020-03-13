@@ -287,6 +287,14 @@ app.post("/webhook", (req, res) => {
         }
         console.log("El response a retornar:");
         console.log(varResponse);
+        if (
+          users[senderPsid].state === "recomendation1" ||
+          users[senderPsid].state === "recomendation2" ||
+          users[senderPsid].state === "recomendation3" ||
+          (users[senderPsid].state === "recomendation4" && varResponse != null)
+        ) {
+          users[senderPsid].howFact = varResponse[2].payload;
+        }
         if (users[senderPsid].state === "getstarted" && varResponse != null) {
           users[senderPsid].state = "select_input";
         } else if (

@@ -109,10 +109,27 @@ module.exports = class DemoTable {
         ]
       };
 
+      let reportString = "";
+      //choose
+      switch (this.user.typeOfReport) {
+        case "yes_1":
+          reportString = i18n.__("menu.complaints_1");
+          break;
+        case "yes_2":
+          reportString = i18n.__("menu.complaints_2");
+          break;
+        case "yes_3":
+          reportString = i18n.__("menu.complaints_3");
+          break;
+        case "yes_4":
+          reportString = i18n.__("menu.complaints_4");
+          break;
+      }
+
       const table1 = {
         headers: [i18n.__("titles.title_com_en"), " "],
         rows: [
-          [i18n.__("report.type_en"), this.user.typeOfReport],
+          [i18n.__("report.type_en"), reportString],
           [i18n.__("report.datetime_en"), this.user.dateOfFact],
           [i18n.__("report.place_en"), this.user.addressFact],
           [i18n.__("report.details_en"), this.user.howFact]

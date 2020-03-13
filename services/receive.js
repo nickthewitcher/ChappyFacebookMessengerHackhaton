@@ -420,6 +420,8 @@ module.exports = class Receive {
       console.log("Payload handleAttachmentMessage");
       console.log(response);
     } else if (lastevent === "file_input") {
+      console.log("Asignando codigo a mensaje");
+      console.log(this.user.idreport);
       let first = Response.genText(i18n.__("fallback.finish1"), {
         message: this.user.idreport
       });
@@ -680,6 +682,8 @@ module.exports = class Receive {
       };
       response = [first, payloadSecond];
     } else if (payload.includes("decline_evidence")) {
+      console.log("Asignando codigo a mensaje");
+      console.log(this.user.idreport);
       let first = Response.genText(i18n.__("fallback.finish1"), {
         message: this.user.idreport
       });

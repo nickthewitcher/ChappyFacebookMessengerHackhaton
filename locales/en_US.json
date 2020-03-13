@@ -128,7 +128,6 @@
     "evidence": "Do you want to attach any evidence?",
     "evidence_input": "Please attach the evidence.",
     "pdfpath": "You can download your report from:",
-
     "finish1": "Ready, do not worry, your complaint has been registered with the code \"{{message}}\" and will be referred to the relevant entities.",
     "finish2": "Chappy Police Man attended you, I hope I helped you. Have a nice day."
   },
