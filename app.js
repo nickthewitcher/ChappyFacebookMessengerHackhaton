@@ -198,16 +198,21 @@ app.post("/webhook", (req, res) => {
                   "deny_confirmation"
                 ) {
                   users[senderPsid].state = "nombre";
+                  console.log("Deny confirmation app.js");
                 } else if (
                   webhook_event.message.quick_reply.payload ===
                   "decline_evidence"
                 ) {
                   users[senderPsid].state = "finish";
+                  console.log("decline confirmation app.js");
+
                   console.log("PROCESO TERMINADO sin file ADJUNTO");
                 } else if (
                   webhook_event.message.quick_reply.payload ===
                   "accept_evidence"
                 ) {
+                  console.log("accept evidence  app.js");
+
                   users[senderPsid].state = "evidence_confirmed";
                 }
               }
@@ -330,7 +335,8 @@ app.post("/webhook", (req, res) => {
         ) {
           users[senderPsid].state = "file_input";
         } else if (
-          (users[senderPsid].state = "file_input" && varResponse != null)
+          users[senderPsid].state === "file_input" &&
+          varResponse != null
         ) {
           users[senderPsid].state = "finish";
           console.log("PROCESO TERMINADO con file ADJUNTO");
