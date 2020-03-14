@@ -78,7 +78,7 @@ module.exports = class DemoTable {
     );*/
 
       doc.text(
-        i18n.__("report.idreport_en") + this.user.idreport,
+        "\n" + i18n.__("report.idreport_en") + this.user.idreport,
         {
           align: "right"
         },
